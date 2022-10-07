@@ -3,11 +3,25 @@ import '../App.css';
 
 function TodoItem(props) {
 
-    return (
-        <div className='todo-item'> 
-            {props.item}
-        </div>
-    );
+    const {id, text, checked} = props.item
     
+    const removeList = () => {
+        props.removeItem(id)
+    }
+    const updateList =() => {
+        console.log('clicked')
+        // props.handleEditClick(props.item)
+    }
+
+    return (
+        <li className='todo-item'> 
+            <p>{text}</p>
+
+            <div className="tool">
+                <button onClick={updateList}>Edit</button>
+                <button onClick={removeList} >Delete</button>
+            </div>
+        </li>
+    );
 }
 export default TodoItem;
