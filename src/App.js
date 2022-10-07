@@ -76,7 +76,7 @@ function App() {
 
       <TodoBoard todoList={todoList} handleRemove={handleRemove} handleUpdate={handleUpdate}></TodoBoard>
 
-      <TodoUpdate todoList={todoList} ></TodoUpdate>
+      <TodoUpdate todoList={todoList} handleUpdate={handleUpdate}></TodoUpdate>
 
       </div>
     </main>

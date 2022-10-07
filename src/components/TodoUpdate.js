@@ -1,26 +1,39 @@
 
-import React, { Component } from 'react';
+import React, { Component, useState} from 'react';
 import '../App.css';
 
 function TodoUpdate(props) {
 
-  const {id, text, checked} = props.todoList
-    
-  const removeList = () => {
-      props.removeItem(id)
-  }
-  const handleEditForm = () => {} //임시. 에러 
+
+    const [inputValue, setinputValue] = useState('');
+    const onChange  = (e) => {
+        setinputValue(e.target.value);
+    }
+    const onSubmit = (e) => {
+        validation(inputValue);
+        setinputValue('');
+        e.preventDefault();
+      }  
+      const validation = (input) => {
+        if(input === '' || input == null){
+          return
+        }
+        else {
+            props.handleUpdate(input)
+        }
+      }
+
+
+//   const handleEditForm = () => {} 
 
   return (
-    <main>
-        <div>
-            <form onSubmit={handleEditForm}>
-                <h2>Edit Todo</h2>
-                <input type="text"/>
-                <button>Edit</button>
-            </form>
-        </div>
-    </main>
+    <div>
+        <form onSubmit={onSubmit}>
+            <h2>Edit Todo</h2>
+            <input type="text" placeholder='Edit Todo' value={inputValue} onChange={onChange}/>
+            <button>Edit</button>
+        </form>
+    </div>
   );
 }
 
