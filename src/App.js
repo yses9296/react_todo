@@ -52,8 +52,7 @@ function App() {
       todo.id === selectedTodo ? {...todo, text } : todo,),
     );
   }
-
-
+  
   return (
     <main>
       <div>

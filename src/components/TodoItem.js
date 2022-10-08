@@ -16,7 +16,6 @@ function TodoItem(props) {
     return (
         <li className='todo-item'> 
             <p>{text}</p>
-
             <div className="tool">
                 <button onClick={updateList}>Edit</button>
                 <button onClick={removeList} >Delete</button>
