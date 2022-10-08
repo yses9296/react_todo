@@ -3,13 +3,13 @@ import TodoItem from './TodoItem';
 
 function TodoBoard(props) {
     const removeItem = props.handleRemove;
-    const updateItem = props.handleUpdate;
+    const getItem = props.getClickedTodo;
 
     return (
         <ul> 
             <h1 className='todo-tit'>Todo List</h1>
             {props.todoList.map((item) => 
-                <TodoItem key={item.id} item={item} removeItem={removeItem} updateItem={updateItem}/>
+                <TodoItem key={item.id} item={item} removeItem={removeItem} getItem={getItem}/>
             )}
         </ul>
     );

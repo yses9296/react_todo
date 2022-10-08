@@ -17,13 +17,10 @@ function TodoUpdate(props) {
           return
         }
         else {
-            props.handleUpdate(props.id, input)
+            props.handleUpdate(input)
         }
       }
-
-
-//   const handleEditForm = () => {} 
-
+      
   return (
     <div>
         <form onSubmit={onSubmit}>

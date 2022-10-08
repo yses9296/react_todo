@@ -40,17 +40,18 @@ function App() {
   const handleRemove = (id) => {
     setTodoList( todoList.filter((todo) => todo.id !== id ))
   }
-  const handleUpdate = (id, text) => {
-    setTodoList(todoList.map( todo => 
-      todo.id === id ? {...todo, text } : todo,),
-    );
+
+
+  const [selectedTodo, setSelecetedTodo] = useState(null);
+  // const [newTodo, setNewTodo] = useState();
+  const onChangedSelectedTodo = (id) => {
+    setSelecetedTodo(id);
+    console.log(id)
   }
-
-
-  const [selectedTodo, setSelecetedTodo] = useState();
-  const [newTodo, setNewTodo] = useState();
-  const onChangedSelectedTodo = (todo) => {
-    setSelecetedTodo(todo)
+  const handleUpdate = (text) => {
+    setTodoList(todoList.map( todo => 
+      todo.id === selectedTodo ? {...todo, text } : todo,),
+    );
   }
 
 
@@ -59,7 +60,7 @@ function App() {
       <div>
         <TodoCreate handleCreate={handleCreate}></TodoCreate>
 
-        <TodoBoard todoList={todoList} handleRemove={handleRemove} handleUpdate={onChangedSelectedTodo}></TodoBoard>
+        <TodoBoard todoList={todoList} handleRemove={handleRemove} getClickedTodo={onChangedSelectedTodo}></TodoBoard>
 
         <TodoUpdate todoList={todoList} handleUpdate={handleUpdate}></TodoUpdate>
 
