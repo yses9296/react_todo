@@ -43,7 +43,6 @@ function App() {
 
 
   const [selectedTodo, setSelecetedTodo] = useState(null);
-  // const [newTodo, setNewTodo] = useState();
   const onChangedSelectedTodo = (id) => {
     setSelecetedTodo(id);
     console.log(id)
@@ -60,7 +59,7 @@ function App() {
       <div>
         <TodoCreate handleCreate={handleCreate}></TodoCreate>
 
-        <TodoBoard todoList={todoList} handleRemove={handleRemove} getClickedTodo={onChangedSelectedTodo}></TodoBoard>
+        <TodoBoard todoList={todoList} handleRemove={handleRemove} onChangedSelectedTodo={onChangedSelectedTodo}></TodoBoard>
 
         <TodoUpdate todoList={todoList} handleUpdate={handleUpdate}></TodoUpdate>
 

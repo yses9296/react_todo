@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 
 function TodoBoard(props) {
     const removeItem = props.handleRemove;
-    const getItem = props.getClickedTodo;
+    const getItem = props.onChangedSelectedTodo;
 
     return (
         <ul> 
