@@ -10,7 +10,7 @@ function TodoItem(props) {
     }
     const updateList =() => {
         console.log('clicked')
-        // props.handleEditClick(props.item)
+        props.updateItem(id);
     }
 
     return (

@@ -1,10 +1,8 @@
 
-import React, { Component, useState} from 'react';
+import React, {useState} from 'react';
 import '../App.css';
 
 function TodoUpdate(props) {
-
-
     const [inputValue, setinputValue] = useState('');
     const onChange  = (e) => {
         setinputValue(e.target.value);
@@ -19,7 +17,7 @@ function TodoUpdate(props) {
           return
         }
         else {
-            props.handleUpdate(input)
+            props.handleUpdate(props.id, input)
         }
       }
 

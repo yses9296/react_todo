@@ -1,11 +1,11 @@
-import React, { Component, useState, useRef, useCallback} from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import TodoBoard from './components/TodoBoard';
+import TodoCreate from './components/TodoCreate';
 import TodoUpdate from './components/TodoUpdate';
 
 
 function App() {
-  const [inputValue, setinputValue] = useState('');
   const [todoList, setTodoList] = useState([
     {
       id: 1,
@@ -18,20 +18,9 @@ function App() {
       checked: false
     }
   ]);
-  const inputEl = useRef(null);
+
 
   const newId = useRef(3);
-  const onChange  = (e) => {
-    setinputValue(e.target.value);
-  }
-
-  const onSubmit = (e) => {
-    validation(inputValue);
-    setinputValue('');
-    inputEl.current.focus();
-    e.preventDefault();
-  }  
-
   const onToggle = (id) => {
     setTodoList(todoList.map( todo => 
       todo.id === id ? {...todo, checked: !todo.checked } : todo,),
@@ -44,7 +33,6 @@ function App() {
       text,
       checked: false
     }
-
     setTodoList([...todoList, newList])
     newId.current++;
   }
@@ -52,31 +40,28 @@ function App() {
   const handleRemove = (id) => {
     setTodoList( todoList.filter((todo) => todo.id !== id ))
   }
-  const handleUpdate = (id) => {
-
+  const handleUpdate = (id, text) => {
+    setTodoList(todoList.map( todo => 
+      todo.id === id ? {...todo, text } : todo,),
+    );
   }
 
-  const validation = (input) => {
-    if(input === '' || input == null){
-      return
-    }
-    else {
-      handleCreate (input)
-    }
+
+  const [selectedTodo, setSelecetedTodo] = useState();
+  const [newTodo, setNewTodo] = useState();
+  const onChangedSelectedTodo = (todo) => {
+    setSelecetedTodo(todo)
   }
+
 
   return (
     <main>
       <div>
-        <form className="header" onSubmit={onSubmit}>
-          <input ref={inputEl} type="text" placeholder='Add a new task' className="addInput" 
-                  onChange={onChange}/>
-          <button className="addBtn" type="submit">Add</button>
-        </form>
+        <TodoCreate handleCreate={handleCreate}></TodoCreate>
 
-      <TodoBoard todoList={todoList} handleRemove={handleRemove} handleUpdate={handleUpdate}></TodoBoard>
+        <TodoBoard todoList={todoList} handleRemove={handleRemove} handleUpdate={onChangedSelectedTodo}></TodoBoard>
 
-      <TodoUpdate todoList={todoList} handleUpdate={handleUpdate}></TodoUpdate>
+        <TodoUpdate todoList={todoList} handleUpdate={handleUpdate}></TodoUpdate>
 
       </div>
     </main>

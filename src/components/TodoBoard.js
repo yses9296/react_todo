@@ -9,7 +9,7 @@ function TodoBoard(props) {
         <ul> 
             <h1 className='todo-tit'>Todo List</h1>
             {props.todoList.map((item) => 
-                <TodoItem key={item.id} item={item} removeItem={removeItem} updateList={updateItem}/>
+                <TodoItem key={item.id} item={item} removeItem={removeItem} updateItem={updateItem}/>
             )}
         </ul>
     );

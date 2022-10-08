@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import '../App.css';
 
-function ToDoCreate(props) {
-
+function TodoCreate(props) {
     const [inputValue, setinputValue] = useState('');
     const onChange  = (e) => {
         setinputValue(e.target.value);
@@ -31,4 +30,4 @@ function ToDoCreate(props) {
     )
 }
 
-export default ToDoCreate;
+export default TodoCreate;
